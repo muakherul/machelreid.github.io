@@ -1,0 +1,473 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages - Machel Reid</title>
+<meta name="description" content="In our paper “Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages” (Accepted to the ICLR 2020 AfricaNLP Workshop)  [paper], we explore methods learning word representations for low resource languages, in particular, Xhosa.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Machel Reid">
+<meta property="og:title" content="Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages">
+<meta property="og:url" content="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html">
+
+
+  <meta property="og:description" content="In our paper “Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages” (Accepted to the ICLR 2020 AfricaNLP Workshop)  [paper], we explore methods learning word representations for low resource languages, in particular, Xhosa.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-03-02T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Machel Reid Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<link rel="stylesheet" href="/extras/academicons-1.8.6/css/academicons.min.css"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Machel Reid
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages">
+    <meta itemprop="description" content="In our paper “Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages” (Accepted to the ICLR 2020 AfricaNLP Workshop) [paper], we explore methods learning word representations for low resource languages, in particular, Xhosa.">
+    <meta itemprop="datePublished" content="2020-03-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#approach">APPROACH</a></li>
+  <li><a href="#results">RESULTS</a>
+    <ul>
+      <li><a href="#bible">Bible</a></li>
+      <li><a href="#xhoxexamples">XhOxExamples</a></li>
+    </ul>
+  </li>
+  <li><a href="#citation">CITATION</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p>In our paper <em>“Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages”</em> (Accepted to the ICLR 2020 AfricaNLP Workshop) 
+[<a href="https://arxiv.org/abs/2003.04419">paper</a>], we explore methods learning word representations for low resource languages, in particular, <em>Xhosa</em>.</p>
+
+<p>In particular we look at different combinations of pretrained vectors in high-resource langauges (such as GloVe for English) and subword representations using FASTTEXT.</p>
+
+<script type="math/tex; mode=display">E_M = \texttt{FASTTEXT}(\mathbb{V}),\ E_V = \texttt{GloVe}(\mathbb{V})</script>
+
+<h3 id="approach"><strong>APPROACH</strong></h3>
+
+<p>Our approach assumes the existence of a vocabulary in our low-resource language <script type="math/tex">\mathbb{V} = \{v_1,\dots,v_T\}</script>, the corresponding translations of the words in <script type="math/tex">\mathbb{V}</script> in a high-resource language, referred to as <script type="math/tex">\mathbb{D} = \{d_1,\dots,d_T\}</script>, and a pretrained embedding matrix for the high resource language <script type="math/tex">E_{HR}</script>. <script type="math/tex">\mathbb{D}</script> can either be comprised by individual words, in the case the word in the low-resource language can be accurately mapped to a single word in the high-resource language (e.g. indoda → man); or by a sequence of words in the case that the word in the low-resource language maps to more than one word in the high-resource language (e.g. bethuna → [listen, everyone]). Concretely, our objective is to use both V and D to produce vector representations for each word in <script type="math/tex">\mathbb{V}</script>.</p>
+
+<p>To leverage the high-resource language, we embed the atomic elements of <script type="math/tex">\mathbb{D}</script> in <script type="math/tex">E_{HR}</script> and map the resulting vectors to the corresponding word in <script type="math/tex">\mathbb{V}</script>. In the case of <script type="math/tex">d_i</script> being a sequence, we take a similar approach to <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cogs.12481">Lazaridou et al. (2017)</a> and sum the normalized word vectors for each word in <script type="math/tex">d_i</script> to produce a word representation for the word <script type="math/tex">v_i</script>. We refer to the resulting embedding matrix as <script type="math/tex">E_V</script>. Additionally, we pretrain another embedding matrix <script type="math/tex">E_M</script> on a corpus in our low resource language using subword information to capture similarity correlated with the morphological nature of words (<a href="https://arxiv.org/abs/1607.04606">Bojanowski et al., 2016</a>). We experiment with the following 4 methods to initialize the word embeddings for our downstream task (the vocabulary for our downstream task might differ from <script type="math/tex">\mathbb{V}</script>):</p>
+<ul>
+  <li><strong><em>Xh</em>Pre</strong> - Initialization with <script type="math/tex">E_V</script> . Words not present in <script type="math/tex">E_V</script> are initialized with <script type="math/tex">E_M</script> .</li>
+  <li><strong><em>Xh</em>Sub</strong> - Initialization with <script type="math/tex">E_M</script> only.</li>
+  <li><strong>VecMap</strong> - We learn cross-lingual word embedding mappings by taking two sets of monolingual word embeddings, <script type="math/tex">E_V</script> and <script type="math/tex">E_M</script> , and mapping them to a common space following
+Artetxe et al. (2018).</li>
+  <li><strong><em>Xh</em>Meta</strong> - We compute meta-embeddings for every word <script type="math/tex">w_i</script> by taking the mean of <script type="math/tex">E_V(w_i)</script>
+and <script type="math/tex">E_M(w_i)</script>, following <a href="https://arxiv.org/abs/1804.05262">Coates &amp; Bollegala (2018)</a>. Words not present in <script type="math/tex">E_V</script> are associated with an UNK token and its corresponding vector.</li>
+</ul>
+
+<h3 id="results"><strong>RESULTS</strong></h3>
+<h4 id="bible"><strong>Bible</strong></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Embedding Configuration</th>
+      <th>BLEU</th>
+      <th>BEER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Random Initialization</td>
+      <td>21.79</td>
+      <td>21.84</td>
+    </tr>
+    <tr>
+      <td>VecMap</td>
+      <td>22.46</td>
+      <td>22.03</td>
+    </tr>
+    <tr>
+      <td><em>Xh</em>Sub</td>
+      <td>24.65</td>
+      <td>22.79</td>
+    </tr>
+    <tr>
+      <td><em>Xh</em>Pre</td>
+      <td>27.67</td>
+      <td>22.40</td>
+    </tr>
+    <tr>
+      <td><em>Xh</em>Meta</td>
+      <td><strong>29.09</strong></td>
+      <td><strong>23.33</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="xhoxexamples"><strong>XhOxExamples</strong></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Embedding Configuration</th>
+      <th>BLEU-4</th>
+      <th>BEER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Random Initialization</td>
+      <td>16.08</td>
+      <td>25.30</td>
+    </tr>
+    <tr>
+      <td>VecMap</td>
+      <td>16.38</td>
+      <td>25.42</td>
+    </tr>
+    <tr>
+      <td><em>Xh</em>Sub</td>
+      <td>17.37</td>
+      <td>26.04</td>
+    </tr>
+    <tr>
+      <td><em>Xh</em>Pre</td>
+      <td>17.06</td>
+      <td>25.70</td>
+    </tr>
+    <tr>
+      <td><em>Xh</em>Meta</td>
+      <td><strong>17.77</strong></td>
+      <td><strong>26.44</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As is evident from the results, the <em>Xh</em>Meta approach performed the highest in all tasks, signifying the necessity for both embedding spaces for more “meaningful” word embeddings for this task.</p>
+
+<p>For more details, like dataset statistics, please refer to the <em><a href="https://arxiv.org/abs/2003.04419">paper</a></em>.</p>
+
+<h3 id="citation"><strong>CITATION</strong></h3>
+<pre><code class="language-bibtex">@misc{reid2020combining,
+    title={Combining Pretrained High-Resource Embeddings and Subword Representations for Low-Resource Languages},
+    author={Machel Reid and Edison Marrese-Taylor and Yutaka Matsuo},
+    year={2020},
+    eprint={2003.04419},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+</code></pre>
+<p>For the <em>XhOxExamples</em> data, feel free to download it here: <a href="/resources/XhOxExamples.zip">XhOxExamples.zip</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-02T00:00:00+09:00">March 2, 2020</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/2020/07/19/a-simple-guide-to-non-autoregressive-machine-translation.html" class="pagination--pager" title="A Simple Guide To Non Autoregressive Machine Translation
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Machel Reid. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+
+  </body>
+</html>

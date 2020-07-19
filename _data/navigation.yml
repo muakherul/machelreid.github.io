@@ -1,0 +1,8 @@
+# main links
+main:
+  - title: "Publications"
+    url: /publications/
+  - title: "Resume/CV"
+    url: /resume
+  - title: "Blog"
+    url: /blog/

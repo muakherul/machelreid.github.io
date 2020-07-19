@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-19T16:57:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Machel Reid</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">A Simple Guide To Non Autoregressive Machine Translation</title><link href="http://localhost:4000/2020/07/19/a-simple-guide-to-non-autoregressive-machine-translation.html" rel="alternate" type="text/html" title="A Simple Guide To Non Autoregressive Machine Translation" /><published>2020-07-19T00:00:00+09:00</published><updated>2020-07-19T00:00:00+09:00</updated><id>http://localhost:4000/2020/07/19/a-simple-guide-to-non-autoregressive-machine-translation</id><content type="html" xml:base="http://localhost:4000/2020/07/19/a-simple-guide-to-non-autoregressive-machine-translation.html">&lt;p&gt;Generally, when we think about generation in NLP, we think of it as going from left-to-right (or right-to-left) – i.e. you generate one token at a time. For example, take this diagram of this language model below:&lt;/p&gt;
+
+&lt;p&gt;[diagram]&lt;/p&gt;
+
+&lt;p&gt;You can see that the prediction of the word &lt;em&gt;word&lt;/em&gt; is conditioned on the previous prediciton of the word &lt;em&gt;another word&lt;/em&gt;. This form of generation is commonly referred to as &lt;strong&gt;autoregressive&lt;/strong&gt; - each output is conditioned on the previous one and a sequence is generated sequentially.&lt;/p&gt;
+
+&lt;p&gt;However, what if you could generate all the tokens in your sequence &lt;em&gt;at-once&lt;/em&gt;. Recently, with the introduction of the Transformer in which sequence-level operations can be computed in parallel, research on &lt;strong&gt;non-autoregressivetranslation&lt;/strong&gt;.&lt;/p&gt;</content><author><name>Machel Reid</name></author><summary type="html">Generally, when we think about generation in NLP, we think of it as going from left-to-right (or right-to-left) – i.e. you generate one token at a time. For example, take this diagram of this language model below:</summary></entry><entry><title type="html">Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages</title><link href="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html" rel="alternate" type="text/html" title="Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages" /><published>2020-03-02T00:00:00+09:00</published><updated>2020-03-02T00:00:00+09:00</updated><id>http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages</id><content type="html" xml:base="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html">&lt;p&gt;In our paper &lt;em&gt;“Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages”&lt;/em&gt; (Accepted to the ICLR 2020 AfricaNLP Workshop) 
+[&lt;a href=&quot;https://arxiv.org/abs/2003.04419&quot;&gt;paper&lt;/a&gt;], we explore methods learning word representations for low resource languages, in particular, &lt;em&gt;Xhosa&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;In particular we look at different combinations of pretrained vectors in high-resource langauges (such as GloVe for English) and subword representations using FASTTEXT.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E_M = \texttt{FASTTEXT}(\mathbb{V}),\ E_V = \texttt{GloVe}(\mathbb{V})&lt;/script&gt;
+
+&lt;h3 id=&quot;approach&quot;&gt;&lt;strong&gt;APPROACH&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Our approach assumes the existence of a vocabulary in our low-resource language &lt;script type=&quot;math/tex&quot;&gt;\mathbb{V} = \{v_1,\dots,v_T\}&lt;/script&gt;, the corresponding translations of the words in &lt;script type=&quot;math/tex&quot;&gt;\mathbb{V}&lt;/script&gt; in a high-resource language, referred to as &lt;script type=&quot;math/tex&quot;&gt;\mathbb{D} = \{d_1,\dots,d_T\}&lt;/script&gt;, and a pretrained embedding matrix for the high resource language &lt;script type=&quot;math/tex&quot;&gt;E_{HR}&lt;/script&gt;. &lt;script type=&quot;math/tex&quot;&gt;\mathbb{D}&lt;/script&gt; can either be comprised by individual words, in the case the word in the low-resource language can be accurately mapped to a single word in the high-resource language (e.g. indoda → man); or by a sequence of words in the case that the word in the low-resource language maps to more than one word in the high-resource language (e.g. bethuna → [listen, everyone]). Concretely, our objective is to use both V and D to produce vector representations for each word in &lt;script type=&quot;math/tex&quot;&gt;\mathbb{V}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;To leverage the high-resource language, we embed the atomic elements of &lt;script type=&quot;math/tex&quot;&gt;\mathbb{D}&lt;/script&gt; in &lt;script type=&quot;math/tex&quot;&gt;E_{HR}&lt;/script&gt; and map the resulting vectors to the corresponding word in &lt;script type=&quot;math/tex&quot;&gt;\mathbb{V}&lt;/script&gt;. In the case of &lt;script type=&quot;math/tex&quot;&gt;d_i&lt;/script&gt; being a sequence, we take a similar approach to &lt;a href=&quot;https://onlinelibrary.wiley.com/doi/full/10.1111/cogs.12481&quot;&gt;Lazaridou et al. (2017)&lt;/a&gt; and sum the normalized word vectors for each word in &lt;script type=&quot;math/tex&quot;&gt;d_i&lt;/script&gt; to produce a word representation for the word &lt;script type=&quot;math/tex&quot;&gt;v_i&lt;/script&gt;. We refer to the resulting embedding matrix as &lt;script type=&quot;math/tex&quot;&gt;E_V&lt;/script&gt;. Additionally, we pretrain another embedding matrix &lt;script type=&quot;math/tex&quot;&gt;E_M&lt;/script&gt; on a corpus in our low resource language using subword information to capture similarity correlated with the morphological nature of words (&lt;a href=&quot;https://arxiv.org/abs/1607.04606&quot;&gt;Bojanowski et al., 2016&lt;/a&gt;). We experiment with the following 4 methods to initialize the word embeddings for our downstream task (the vocabulary for our downstream task might differ from &lt;script type=&quot;math/tex&quot;&gt;\mathbb{V}&lt;/script&gt;):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Xh&lt;/em&gt;Pre&lt;/strong&gt; - Initialization with &lt;script type=&quot;math/tex&quot;&gt;E_V&lt;/script&gt; . Words not present in &lt;script type=&quot;math/tex&quot;&gt;E_V&lt;/script&gt; are initialized with &lt;script type=&quot;math/tex&quot;&gt;E_M&lt;/script&gt; .&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Xh&lt;/em&gt;Sub&lt;/strong&gt; - Initialization with &lt;script type=&quot;math/tex&quot;&gt;E_M&lt;/script&gt; only.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;VecMap&lt;/strong&gt; - We learn cross-lingual word embedding mappings by taking two sets of monolingual word embeddings, &lt;script type=&quot;math/tex&quot;&gt;E_V&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;E_M&lt;/script&gt; , and mapping them to a common space following
+Artetxe et al. (2018).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Xh&lt;/em&gt;Meta&lt;/strong&gt; - We compute meta-embeddings for every word &lt;script type=&quot;math/tex&quot;&gt;w_i&lt;/script&gt; by taking the mean of &lt;script type=&quot;math/tex&quot;&gt;E_V(w_i)&lt;/script&gt;
+and &lt;script type=&quot;math/tex&quot;&gt;E_M(w_i)&lt;/script&gt;, following &lt;a href=&quot;https://arxiv.org/abs/1804.05262&quot;&gt;Coates &amp;amp; Bollegala (2018)&lt;/a&gt;. Words not present in &lt;script type=&quot;math/tex&quot;&gt;E_V&lt;/script&gt; are associated with an UNK token and its corresponding vector.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;&lt;strong&gt;RESULTS&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&quot;bible&quot;&gt;&lt;strong&gt;Bible&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Embedding Configuration&lt;/th&gt;
+      &lt;th&gt;BLEU&lt;/th&gt;
+      &lt;th&gt;BEER&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Random Initialization&lt;/td&gt;
+      &lt;td&gt;21.79&lt;/td&gt;
+      &lt;td&gt;21.84&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;VecMap&lt;/td&gt;
+      &lt;td&gt;22.46&lt;/td&gt;
+      &lt;td&gt;22.03&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;Xh&lt;/em&gt;Sub&lt;/td&gt;
+      &lt;td&gt;24.65&lt;/td&gt;
+      &lt;td&gt;22.79&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;Xh&lt;/em&gt;Pre&lt;/td&gt;
+      &lt;td&gt;27.67&lt;/td&gt;
+      &lt;td&gt;22.40&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;Xh&lt;/em&gt;Meta&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;29.09&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;23.33&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;xhoxexamples&quot;&gt;&lt;strong&gt;XhOxExamples&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Embedding Configuration&lt;/th&gt;
+      &lt;th&gt;BLEU-4&lt;/th&gt;
+      &lt;th&gt;BEER&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Random Initialization&lt;/td&gt;
+      &lt;td&gt;16.08&lt;/td&gt;
+      &lt;td&gt;25.30&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;VecMap&lt;/td&gt;
+      &lt;td&gt;16.38&lt;/td&gt;
+      &lt;td&gt;25.42&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;Xh&lt;/em&gt;Sub&lt;/td&gt;
+      &lt;td&gt;17.37&lt;/td&gt;
+      &lt;td&gt;26.04&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;Xh&lt;/em&gt;Pre&lt;/td&gt;
+      &lt;td&gt;17.06&lt;/td&gt;
+      &lt;td&gt;25.70&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;Xh&lt;/em&gt;Meta&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;17.77&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;26.44&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;As is evident from the results, the &lt;em&gt;Xh&lt;/em&gt;Meta approach performed the highest in all tasks, signifying the necessity for both embedding spaces for more “meaningful” word embeddings for this task.&lt;/p&gt;
+
+&lt;p&gt;For more details, like dataset statistics, please refer to the &lt;em&gt;&lt;a href=&quot;https://arxiv.org/abs/2003.04419&quot;&gt;paper&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;citation&quot;&gt;&lt;strong&gt;CITATION&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bibtex&quot;&gt;@misc{reid2020combining,
+    title={Combining Pretrained High-Resource Embeddings and Subword Representations for Low-Resource Languages},
+    author={Machel Reid and Edison Marrese-Taylor and Yutaka Matsuo},
+    year={2020},
+    eprint={2003.04419},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For the &lt;em&gt;XhOxExamples&lt;/em&gt; data, feel free to download it here: &lt;a href=&quot;/resources/XhOxExamples.zip&quot;&gt;XhOxExamples.zip&lt;/a&gt;&lt;/p&gt;</content><author><name>Machel Reid</name></author><summary type="html">In our paper “Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages” (Accepted to the ICLR 2020 AfricaNLP Workshop) [paper], we explore methods learning word representations for low resource languages, in particular, Xhosa.</summary></entry></feed>

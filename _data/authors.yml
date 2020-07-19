@@ -1,0 +1,18 @@
+Machel Reid:
+  name        : "Machel Reid"
+  bio         : "Research Intern at the University of Tokyo working on natural language processing research"
+  avatar      : "/me.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:machelreid2004@gmail.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://machelreid.github.io/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/machelreid"
+    - label: "Scholar"
+      icon: "fas fa-fw ai ai-google-scholar"
+      url: "https://scholar.google.com/citations?user=N8ctPiIAAAAJ&hl=en"
+
