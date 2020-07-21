@@ -2,6 +2,7 @@
 layout: single 
 author: Machel Reid
 toc: true
+toc_sticky: true
 ---
 In our paper *"Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages"* (Accepted to the ICLR 2020 AfricaNLP Workshop) 
 [[paper](https://arxiv.org/abs/2003.04419)], we explore methods learning word representations for low resource languages, in particular, *Xhosa*. 
