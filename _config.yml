@@ -28,8 +28,8 @@ twitter_username: machelreid
 github_username:  machelreid
 
 # Build settings
-theme: minimal-mistakes-jekyll
-# remote_theme: "mmistakes/minimal-mistakes@4.19.3"
+# theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.19.3"
 minimal_mistakes_skin: "dark"
 plugins:
   - jekyll-feed
