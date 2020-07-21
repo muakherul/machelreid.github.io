@@ -4,7 +4,7 @@
 
 layout: home
 author: Machel Reid 
-title: Hi There! Name's Machel.
+title: Hi There! Name's Machel
 ---
 
 I'm a 16-year-old research intern at the University of Tokyo, working on NLP Research at [Matsuo Lab](https://weblab.t.u-tokyo.ac.jp/en/){:target="_blank"} advised by Professor [Yutaka Matsuo](http://ymatsuo.com/){:target="_blank"}. Here, I am currently working on ways to learn representations of edits and ways of editing documents, but I am also interested in/working on definitions, translation, and anything to do with deep generative models (like VAEs). 

@@ -13,6 +13,8 @@
 <meta name="description" content="In our paper “Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages” (Accepted to the ICLR 2020 AfricaNLP Workshop)  [paper], we explore methods learning word representations for low resource languages, in particular, Xhosa.">
 
 
+  <meta name="author" content="Machel Reid">
+
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
@@ -124,7 +126,13 @@
           Machel Reid
           
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/publications/">Publications</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resume">Resume/CV</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog/">Blog</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -151,11 +159,22 @@
 <div itemscope itemtype="https://schema.org/Person">
 
   
+    <div class="author__avatar">
+      
+        <img src="/me.jpg" alt="Machel Reid" itemprop="image">
+      
+    </div>
+  
 
   <div class="author__content">
     
-      <h3 class="author__name" itemprop="name"></h3>
+      <h3 class="author__name" itemprop="name">Machel Reid</h3>
     
+    
+      <div class="author__bio" itemprop="description">
+        <p>Research Intern at the University of Tokyo working on natural language processing research</p>
+
+      </div>
     
   </div>
 
@@ -164,6 +183,24 @@
     <ul class="author__urls social-icons">
       
 
+      
+        
+          
+            <li><a href="mailto:machelreid2004@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://machelreid.github.io/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+            <li><a href="https://twitter.com/machelreid" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://scholar.google.com/citations?user=N8ctPiIAAAAJ&hl=en" rel="nofollow noopener noreferrer"><i class="fas fa-fw ai ai-google-scholar" aria-hidden="true"></i><span class="label">Scholar</span></a></li>
+          
+        
       
 
       
@@ -269,20 +306,20 @@
 
 <p>In particular we look at different combinations of pretrained vectors in high-resource langauges (such as GloVe for English) and subword representations using FASTTEXT.</p>
 
-<script type="math/tex; mode=display">E_M = \texttt{FASTTEXT}(\mathbb{V}),\ E_V = \texttt{GloVe}(\mathbb{V})</script>
+\[E_M = \texttt{FASTTEXT}(\mathbb{V}),\ E_V = \texttt{GloVe}(\mathbb{V})\]
 
 <h3 id="approach"><strong>APPROACH</strong></h3>
 
-<p>Our approach assumes the existence of a vocabulary in our low-resource language <script type="math/tex">\mathbb{V} = \{v_1,\dots,v_T\}</script>, the corresponding translations of the words in <script type="math/tex">\mathbb{V}</script> in a high-resource language, referred to as <script type="math/tex">\mathbb{D} = \{d_1,\dots,d_T\}</script>, and a pretrained embedding matrix for the high resource language <script type="math/tex">E_{HR}</script>. <script type="math/tex">\mathbb{D}</script> can either be comprised by individual words, in the case the word in the low-resource language can be accurately mapped to a single word in the high-resource language (e.g. indoda → man); or by a sequence of words in the case that the word in the low-resource language maps to more than one word in the high-resource language (e.g. bethuna → [listen, everyone]). Concretely, our objective is to use both V and D to produce vector representations for each word in <script type="math/tex">\mathbb{V}</script>.</p>
+<p>Our approach assumes the existence of a vocabulary in our low-resource language \(\mathbb{V} = \{v_1,\dots,v_T\}\), the corresponding translations of the words in \(\mathbb{V}\) in a high-resource language, referred to as \(\mathbb{D} = \{d_1,\dots,d_T\}\), and a pretrained embedding matrix for the high resource language \(E_{HR}\). \(\mathbb{D}\) can either be comprised by individual words, in the case the word in the low-resource language can be accurately mapped to a single word in the high-resource language (e.g. indoda → man); or by a sequence of words in the case that the word in the low-resource language maps to more than one word in the high-resource language (e.g. bethuna → [listen, everyone]). Concretely, our objective is to use both V and D to produce vector representations for each word in \(\mathbb{V}\).</p>
 
-<p>To leverage the high-resource language, we embed the atomic elements of <script type="math/tex">\mathbb{D}</script> in <script type="math/tex">E_{HR}</script> and map the resulting vectors to the corresponding word in <script type="math/tex">\mathbb{V}</script>. In the case of <script type="math/tex">d_i</script> being a sequence, we take a similar approach to <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cogs.12481">Lazaridou et al. (2017)</a> and sum the normalized word vectors for each word in <script type="math/tex">d_i</script> to produce a word representation for the word <script type="math/tex">v_i</script>. We refer to the resulting embedding matrix as <script type="math/tex">E_V</script>. Additionally, we pretrain another embedding matrix <script type="math/tex">E_M</script> on a corpus in our low resource language using subword information to capture similarity correlated with the morphological nature of words (<a href="https://arxiv.org/abs/1607.04606">Bojanowski et al., 2016</a>). We experiment with the following 4 methods to initialize the word embeddings for our downstream task (the vocabulary for our downstream task might differ from <script type="math/tex">\mathbb{V}</script>):</p>
+<p>To leverage the high-resource language, we embed the atomic elements of \(\mathbb{D}\) in \(E_{HR}\) and map the resulting vectors to the corresponding word in \(\mathbb{V}\). In the case of \(d_i\) being a sequence, we take a similar approach to <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cogs.12481">Lazaridou et al. (2017)</a> and sum the normalized word vectors for each word in \(d_i\) to produce a word representation for the word \(v_i\). We refer to the resulting embedding matrix as \(E_V\). Additionally, we pretrain another embedding matrix \(E_M\) on a corpus in our low resource language using subword information to capture similarity correlated with the morphological nature of words (<a href="https://arxiv.org/abs/1607.04606">Bojanowski et al., 2016</a>). We experiment with the following 4 methods to initialize the word embeddings for our downstream task (the vocabulary for our downstream task might differ from \(\mathbb{V}\)):</p>
 <ul>
-  <li><strong><em>Xh</em>Pre</strong> - Initialization with <script type="math/tex">E_V</script> . Words not present in <script type="math/tex">E_V</script> are initialized with <script type="math/tex">E_M</script> .</li>
-  <li><strong><em>Xh</em>Sub</strong> - Initialization with <script type="math/tex">E_M</script> only.</li>
-  <li><strong>VecMap</strong> - We learn cross-lingual word embedding mappings by taking two sets of monolingual word embeddings, <script type="math/tex">E_V</script> and <script type="math/tex">E_M</script> , and mapping them to a common space following
+  <li><strong><em>Xh</em>Pre</strong> - Initialization with \(E_V\) . Words not present in \(E_V\) are initialized with \(E_M\) .</li>
+  <li><strong><em>Xh</em>Sub</strong> - Initialization with \(E_M\) only.</li>
+  <li><strong>VecMap</strong> - We learn cross-lingual word embedding mappings by taking two sets of monolingual word embeddings, \(E_V\) and \(E_M\) , and mapping them to a common space following
 Artetxe et al. (2018).</li>
-  <li><strong><em>Xh</em>Meta</strong> - We compute meta-embeddings for every word <script type="math/tex">w_i</script> by taking the mean of <script type="math/tex">E_V(w_i)</script>
-and <script type="math/tex">E_M(w_i)</script>, following <a href="https://arxiv.org/abs/1804.05262">Coates &amp; Bollegala (2018)</a>. Words not present in <script type="math/tex">E_V</script> are associated with an UNK token and its corresponding vector.</li>
+  <li><strong><em>Xh</em>Meta</strong> - We compute meta-embeddings for every word \(w_i\) by taking the mean of \(E_V(w_i)\)
+and \(E_M(w_i)\), following <a href="https://arxiv.org/abs/1804.05262">Coates &amp; Bollegala (2018)</a>. Words not present in \(E_V\) are associated with an UNK token and its corresponding vector.</li>
 </ul>
 
 <h3 id="results"><strong>RESULTS</strong></h3>
@@ -369,15 +406,15 @@ and <script type="math/tex">E_M(w_i)</script>, following <a href="https://arxiv.
 <p>For more details, like dataset statistics, please refer to the <em><a href="https://arxiv.org/abs/2003.04419">paper</a></em>.</p>
 
 <h3 id="citation"><strong>CITATION</strong></h3>
-<pre><code class="language-bibtex">@misc{reid2020combining,
-    title={Combining Pretrained High-Resource Embeddings and Subword Representations for Low-Resource Languages},
-    author={Machel Reid and Edison Marrese-Taylor and Yutaka Matsuo},
-    year={2020},
-    eprint={2003.04419},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
-}
-</code></pre>
+<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">reid2020combining</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{Combining Pretrained High-Resource Embeddings and Subword Representations for Low-Resource Languages}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Machel Reid and Edison Marrese-Taylor and Yutaka Matsuo}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2020}</span><span class="p">,</span>
+    <span class="na">eprint</span><span class="p">=</span><span class="s">{2003.04419}</span><span class="p">,</span>
+    <span class="na">archivePrefix</span><span class="p">=</span><span class="s">{arXiv}</span><span class="p">,</span>
+    <span class="na">primaryClass</span><span class="p">=</span><span class="s">{cs.CL}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 <p>For the <em>XhOxExamples</em> data, feel free to download it here: <a href="/resources/XhOxExamples.zip">XhOxExamples.zip</a></p>
 
         
@@ -397,16 +434,6 @@ and <script type="math/tex">E_M(w_i)</script>, following <a href="https://arxiv.
       
 
       
-  <nav class="pagination">
-    
-      <a href="#" class="pagination--pager disabled">Previous</a>
-    
-    
-      <a href="/2020/07/19/a-simple-guide-to-non-autoregressive-machine-translation.html" class="pagination--pager" title="A Simple Guide To Non Autoregressive Machine Translation
-">Next</a>
-    
-  </nav>
-
     </div>
 
     

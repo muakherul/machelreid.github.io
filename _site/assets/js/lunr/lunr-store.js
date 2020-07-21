@@ -4,10 +4,4 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html",
         "teaser": null
-      },{
-        "title": "A Simple Guide To Non Autoregressive Machine Translation",
-        "excerpt":"Generally, when we think about generation in NLP, we think of it as going from left-to-right (or right-to-left) – i.e. you generate one token at a time. For example, take this diagram of this language model below: [diagram] You can see that the prediction of the word word is conditioned...","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/2020/07/19/a-simple-guide-to-non-autoregressive-machine-translation.html",
-        "teaser": null
       }]
