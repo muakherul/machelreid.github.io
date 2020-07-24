@@ -61,4 +61,5 @@ defaults:
       path: ""
     values:
       author_profile: true
+      description: Research Intern at the University of Tokyo working on natural language processing research
 future: false
