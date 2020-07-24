@@ -63,3 +63,11 @@ defaults:
       author_profile: true
       description: Research Intern at the University of Tokyo working on natural language processing research
 future: false
+
+# analytics
+
+analytics: 
+  provider: "google-gtag"
+  google:
+    tracking_id: "UA-171531685-1"
+    anonymize_ip: false
