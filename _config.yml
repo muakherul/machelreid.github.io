@@ -30,7 +30,7 @@ github_username:  machelreid
 # Build settings
 # theme: minimal-mistakes-jekyll
 remote_theme: "mmistakes/minimal-mistakes@4.19.3"
-minimal_mistakes_skin: "dark"
+minimal_mistakes_skin: "default"
 plugins:
   - jekyll-feed
   - jekyll-include-cache 
