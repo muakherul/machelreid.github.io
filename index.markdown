@@ -19,8 +19,8 @@ Before entering the field of machine learning and computational linguistics, I w
 ## News
 * I'm extremely grateful to be accepted as a 4th Generation Masason Foundation Scholar! - July 2020
 
-* Our paper: [*Variational Inference for Learning Representations of Natural Language Edits*](https://arxiv.org/pdf/2004.09143.pdf){:target="_blank"} was accepted to the non-archival track of the [5th Workshop of Representation Learning for NLP](https://sites.google.com/view/repl4nlp2020/){:target="_blank"} at [ACL 2020](http://acl2020.org/){:target="_blank"} - May 2020
+* Our paper: [Variational Inference for Learning Representations of Natural Language Edits](https://arxiv.org/pdf/2004.09143.pdf){:target="_blank"} was accepted to the non-archival track of the [5th Workshop of Representation Learning for NLP](https://sites.google.com/view/repl4nlp2020/){:target="_blank"} at [ACL 2020](http://acl2020.org/){:target="_blank"} - May 2020
 
-* Our paper: [*Combining Pretrained High Resource Embeddings and Subword Representations for Low-Resource Languages*](https://arxiv.org/pdf/2003.04419.pdf){:target="_blank"} was accepted to the AfricaNLP Workshop at [ICLR 2020](https://iclr.cc/){:target="_blank"} - March 2020
+* Our paper: [Combining Pretrained High Resource Embeddings and Subword Representations for Low-Resource Languages](https://arxiv.org/pdf/2003.04419.pdf){:target="_blank"} was accepted to the AfricaNLP Workshop at [ICLR 2020](https://iclr.cc/){:target="_blank"} - March 2020
 
 
