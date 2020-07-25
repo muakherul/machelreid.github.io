@@ -1,7 +1,7 @@
 Machel Reid:
   name        : "Machel Reid"
   bio         : "Research Intern at the University of Tokyo working on natural language processing research"
-  avatar      : "/me2.jpg"
+  avatar      : "/me.jpg"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
