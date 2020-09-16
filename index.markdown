@@ -17,6 +17,8 @@ Previously, I worked on a project for automation of helplines during natural dis
 Before entering the field of machine learning and computational linguistics, I worked for the Thomson Reuters Foundation as a researcher and participated in the conduction of two annual studies, and have this article ([https://www.weforum.org/agenda/authors/machel-reid/](https://www.weforum.org/agenda/authors/machel-reid/){:target="_blank"}) published in the World Economic Forum.
 
 ## News
+* Our paper "VCDM: Leveraging Variational Bi-encoding and Deep Contextualized Word Representations for Improved Definition Modeling" was accepted at EMNLP 2020. Its my 1st first-author conference submission, so I'm extremely happy about this!
+"
 * I'm extremely grateful to be accepted as a 4th Generation Masason Foundation Scholar! - July 2020
 
 * Our paper: [Variational Inference for Learning Representations of Natural Language Edits](https://arxiv.org/pdf/2004.09143.pdf){:target="_blank"} was accepted to the non-archival track of the [5th Workshop of Representation Learning for NLP](https://sites.google.com/view/repl4nlp2020/){:target="_blank"} at [ACL 2020](http://acl2020.org/){:target="_blank"} - May 2020

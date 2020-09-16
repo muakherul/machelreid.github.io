@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-21T15:52:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Machel Reid</title><subtitle>Research Intern at the University of Tokyo working on natural language processing research</subtitle><entry><title type="html">Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages</title><link href="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html" rel="alternate" type="text/html" title="Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages" /><published>2020-03-02T00:00:00+09:00</published><updated>2020-03-02T00:00:00+09:00</updated><id>http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages</id><content type="html" xml:base="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html">&lt;p&gt;In our paper &lt;em&gt;“Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages”&lt;/em&gt; (Accepted to the ICLR 2020 AfricaNLP Workshop) 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-30T11:53:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Machel Reid</title><subtitle>Research Intern at the University of Tokyo working on natural language processing research</subtitle><entry><title type="html">A Simple Guide To Non Autoregressive Machine Translation</title><link href="http://localhost:4000/2020/08/19/a-simple-guide-to-non-autoregressive-machine-translation.html" rel="alternate" type="text/html" title="A Simple Guide To Non Autoregressive Machine Translation" /><published>2020-08-19T00:00:00+09:00</published><updated>2020-08-19T00:00:00+09:00</updated><id>http://localhost:4000/2020/08/19/a-simple-guide-to-non-autoregressive-machine-translation</id><content type="html" xml:base="http://localhost:4000/2020/08/19/a-simple-guide-to-non-autoregressive-machine-translation.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Generally, when we think about generation in NLP, we think of it as going from left-to-right (or right-to-left) – i.e. you generate one token at a time. For example, take this diagram of this language model below:&lt;/p&gt;
+
+&lt;p&gt;[diagram]&lt;/p&gt;
+
+&lt;p&gt;You can see that the prediction of the word &lt;em&gt;word&lt;/em&gt; is conditioned on the previous prediciton of the word &lt;em&gt;another word&lt;/em&gt;. This form of generation is commonly referred to as &lt;strong&gt;autoregressive generation&lt;/strong&gt; - each output is conditioned on the previous one and a sequence is generated sequentially.&lt;/p&gt;
+
+&lt;p&gt;However, what if you could generate all the tokens in your sequence &lt;em&gt;at-once&lt;/em&gt;. Recently, with the introduction of the Transformer – in which sequence-level operations can be computed in parallel – &lt;strong&gt;non-autoregressive&lt;/strong&gt; translation … .&lt;/p&gt;
+
+&lt;p&gt;In this post, I aim to provide a brief overview of exisiting non-autoregressive translation models and summarize some of the recent advances in this domain.&lt;/p&gt;
+
+&lt;h3 id=&quot;autoregressive-generation&quot;&gt;Autoregressive generation&lt;/h3&gt;
+&lt;p&gt;Overview of LMs&lt;/p&gt;
+
+&lt;h2 id=&quot;non-autoregressive&quot;&gt;Non autoregressive&lt;/h2&gt;
+
+&lt;h3 id=&quot;non-autoregressive-translation-jiataos-paper&quot;&gt;Non-autoregressive Translation (Jiatao’s paper)&lt;/h3&gt;
+
+&lt;h3 id=&quot;latent-variable-non-autoregressive-translation---raphaels-paper&quot;&gt;Latent Variable Non-autoregressive Translation - Raphael’s paper&lt;/h3&gt;
+
+&lt;h3 id=&quot;cmlms-and-the-endless-derivatives---marjans-paper&quot;&gt;CMLMs (and the endless derivatives) - Marjan’s paper&lt;/h3&gt;
+
+&lt;h3 id=&quot;levt---jiataos-paper&quot;&gt;LevT - Jiatao’s paper&lt;/h3&gt;
+
+&lt;p&gt;###&lt;/p&gt;</content><author><name>Machel Reid</name></author><summary type="html">Introduction Generally, when we think about generation in NLP, we think of it as going from left-to-right (or right-to-left) – i.e. you generate one token at a time. For example, take this diagram of this language model below:</summary></entry><entry><title type="html">Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages</title><link href="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html" rel="alternate" type="text/html" title="Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages" /><published>2020-03-02T00:00:00+09:00</published><updated>2020-03-02T00:00:00+09:00</updated><id>http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages</id><content type="html" xml:base="http://localhost:4000/2020/03/02/combining-pretrained-high-resource-embeddings-and-subword-representations-for-low-resource-languages.html">&lt;p&gt;In our paper &lt;em&gt;“Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages”&lt;/em&gt; (Accepted to the ICLR 2020 AfricaNLP Workshop) 
 [&lt;a href=&quot;https://arxiv.org/abs/2003.04419&quot;&gt;paper&lt;/a&gt;], we explore methods learning word representations for low resource languages, in particular, &lt;em&gt;Xhosa&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;In particular we look at different combinations of pretrained vectors in high-resource langauges (such as GloVe for English) and subword representations using FASTTEXT.&lt;/p&gt;
@@ -103,13 +127,13 @@ and \(E_M(w_i)\), following &lt;a href=&quot;https://arxiv.org/abs/1804.05262&qu
 &lt;p&gt;For more details, like dataset statistics, please refer to the &lt;em&gt;&lt;a href=&quot;https://arxiv.org/abs/2003.04419&quot;&gt;paper&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;citation&quot;&gt;&lt;strong&gt;CITATION&lt;/strong&gt;&lt;/h3&gt;
-&lt;div class=&quot;language-bibtex highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;@misc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;reid2020combining&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{Combining Pretrained High-Resource Embeddings and Subword Representations for Low-Resource Languages}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{Machel Reid and Edison Marrese-Taylor and Yutaka Matsuo}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{2020}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;eprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{2003.04419}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;archivePrefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{arXiv}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;primaryClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{cs.CL}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bibtex&quot;&gt;@misc{reid2020combining,
+    title={Combining Pretrained High-Resource Embeddings and Subword Representations for Low-Resource Languages},
+    author={Machel Reid and Edison Marrese-Taylor and Yutaka Matsuo},
+    year={2020},
+    eprint={2003.04419},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For the &lt;em&gt;XhOxExamples&lt;/em&gt; data, feel free to download it here: &lt;a href=&quot;/resources/XhOxExamples.zip&quot;&gt;XhOxExamples.zip&lt;/a&gt;&lt;/p&gt;</content><author><name>Machel Reid</name></author><summary type="html">In our paper “Combining Pretrained High Resource Embeddings And Subword Representations For Low Resource Languages” (Accepted to the ICLR 2020 AfricaNLP Workshop) [paper], we explore methods learning word representations for low resource languages, in particular, Xhosa.</summary></entry></feed>
